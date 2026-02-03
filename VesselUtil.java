@@ -22,4 +22,25 @@ public class VesselUtil {
         }
         return null;
     }
+
+    public List<Vessel> getHighPerformanceVessels() {
+        List<Vessel> highPerformanceVessels = new ArrayList<>();
+        if (vesselList.isEmpty()) {
+            return highPerformanceVessels;
+        }
+
+        double maxSpeed = 0.0;
+        for (Vessel v : vesselList) {
+            if (v.getAverageSpeed() > maxSpeed) {
+                maxSpeed = v.getAverageSpeed();
+            }
+        }
+
+        for (Vessel v : vesselList) {
+            if (v.getAverageSpeed() == maxSpeed) {
+                highPerformanceVessels.add(v);
+            }
+        }
+        return highPerformanceVessels;
+    }
 }
